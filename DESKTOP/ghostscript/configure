@@ -1,0 +1,9 @@
+rm -fr freetype lcms2 jpeg libpng
+rm -fr zlib
+
+
+./configure --prefix=$PREFIX 		\
+	    --disable-compile-inits 	\
+	    --enable-dynamic		\
+	    --with-system-libtiff 
+

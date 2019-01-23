@@ -1,0 +1,4 @@
+make install
+
+
+strip --strip-unneeded $PREFIX/bin/xev

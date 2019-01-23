@@ -1,0 +1,6 @@
+./configure --prefix=$PREFIX 			\
+	    --localstatedir=/var		\
+            --disable-alsaconf   		\
+            --disable-bat        		\
+            --disable-xmlto      		\
+            --with-curses=ncursesw

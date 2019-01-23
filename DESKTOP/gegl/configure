@@ -1,0 +1,6 @@
+
+./configure 	--prefix=$PREFIX 		\
+	        --build=$LMBX_BUILD		\
+		--without-vala			\
+		--disable-docs		
+	

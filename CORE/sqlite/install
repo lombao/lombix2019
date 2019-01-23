@@ -1,0 +1,6 @@
+make install
+
+
+find $PREFIX/bin -type f -name "*sql*" -exec strip --strip-unneeded {} \;
+find $PREFIX/lib -type f -name "*sql*" -exec strip --strip-unneeded {} \;
+

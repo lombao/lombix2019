@@ -1,0 +1,9 @@
+
+
+
+  ./configure --prefix=$PREFIX 		\
+	--with-pcre			\
+	--enable-256-color		\
+	--with-app-defaults=$PREFIX/etc/app-defaults
+
+

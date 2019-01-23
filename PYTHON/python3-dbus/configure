@@ -1,0 +1,1 @@
+PYTHON=$PYTHON3 ./configure --prefix=$PREFIX

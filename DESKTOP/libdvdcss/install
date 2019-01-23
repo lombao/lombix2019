@@ -1,0 +1,4 @@
+make install
+
+
+find $PREFIX/lib -type f -name "libdvdcss*" -exec strip --strip-unneeded {} \;

@@ -1,0 +1,15 @@
+
+#
+# NOTE: IT seems the OPUS lib is not found , I do suspect some error
+# in the configure file because it is looking for opusfile but the .pc file
+# is named just "opus" . Also, even when I add them into the LDFLAGS 
+# the configure don't get it.
+
+
+./configure --prefix=$PREFIX		\
+	--build=$LMBX_BUILD		\
+	--disable-static		\
+	--with-opus			\
+	--with-distro=Lombix		\
+	--mandir=$PREFIX/share/man	
+

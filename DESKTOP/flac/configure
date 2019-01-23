@@ -1,0 +1,4 @@
+./configure --prefix=$PREFIX 		\
+            --disable-thorough-tests 	\
+            --disable-static 		
+

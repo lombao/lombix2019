@@ -1,0 +1,6 @@
+./configure --prefix=$PREFIX 		\
+	    --build=$LMBX_BUILD		\
+            --mandir=$PREFIX/share/man 	\
+	    --docdir=$PREFIX/share/doc	\
+	    --enable-gtk3	
+	

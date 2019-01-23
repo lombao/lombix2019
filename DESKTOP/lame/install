@@ -1,0 +1,5 @@
+make install
+
+find $PREFIX/lib -type f -name "limp3lame*" -exec strip --strip-unneeded {} \;
+strip --strip-unneeded $PREFIX/bin/lame
+strip --strip-unneeded $PREFIX/bin/mp3rtp

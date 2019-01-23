@@ -1,0 +1,4 @@
+make SHLIB_LIBS=-lncursesw install
+
+
+strip --strip-unneeded $PREFIX/lib/libreadline.so.7.0

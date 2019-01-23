@@ -1,0 +1,6 @@
+
+
+./configure --prefix=$PREFIX 		\
+	    --disable-vala		\
+	    --build=$LMBX_BUILD		\
+            --disable-static 		

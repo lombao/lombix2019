@@ -1,0 +1,17 @@
+make install
+
+
+strip --strip-unneeded $PREFIX/bin/dnsdomainname
+strip --strip-unneeded $PREFIX/bin/ftp
+strip --strip-unneeded $PREFIX/bin/hostname
+strip --strip-unneeded $PREFIX/bin/ifconfig
+strip --strip-unneeded $PREFIX/bin/ping
+strip --strip-unneeded $PREFIX/bin/ping6
+strip --strip-unneeded $PREFIX/bin/telnet
+strip --strip-unneeded $PREFIX/bin/tftp
+
+
+
+
+
+

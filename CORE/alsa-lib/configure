@@ -1,0 +1,11 @@
+
+./configure --prefix=$PREFIX 			\
+	    --sysconfdir=$PREFIX/etc 		\
+            --mandir=$PREFIX/share/man   	\
+	    --build=$LMBX_BUILD			\
+	    --with-tmpdir=/run			\
+	    --with-tmpdir=directory=/run	
+
+
+
+

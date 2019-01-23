@@ -1,0 +1,5 @@
+make install
+
+find $PREFIX/lib -type f -name "libFLAC*" -exec strip --strip-unneeded {} \;
+strip --strip-unneeded $PREFIX/bin/flac
+strip --strip-unneeded $PREFIX/bin/metaflac

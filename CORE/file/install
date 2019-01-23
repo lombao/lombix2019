@@ -1,0 +1,4 @@
+make install
+
+strip --strip-unneeded $PREFIX/bin/file
+strip --strip-unneeded $PREFIX/lib/libmagic.so.1.0.0

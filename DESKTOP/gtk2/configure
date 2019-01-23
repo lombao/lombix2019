@@ -1,0 +1,6 @@
+
+./configure --prefix=$PREFIX           		\
+	    --build=$LMBX_BUILD			\
+            --sysconfdir=$PREFIX/etc   		\
+            --enable-debug=no         		\
+            --disable-gtk-doc         

@@ -1,0 +1,6 @@
+./configure --prefix=$PREFIX 		\
+            --enable-debug=no		\
+            --with-x11 			\
+	    --disable-glibtest		\
+            --disable-gtk-doc
+

@@ -1,0 +1,3 @@
+make install
+
+find $PREFIX/lib -type f -name "libisofs*" -exec strip --strip-unneeded {} \;

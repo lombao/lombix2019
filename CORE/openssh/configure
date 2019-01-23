@@ -1,0 +1,8 @@
+
+
+
+./configure --prefix=$PREFIX 			\
+            --sysconfdir=$PREFIX/etc/ssh	\
+            --with-md5-passwords     		\
+            --with-pie               		\
+            --with-privsep-path=/var/lib/sshd

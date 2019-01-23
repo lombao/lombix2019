@@ -1,0 +1,46 @@
+
+
+
+
+#
+# Also, the SSL_CERT_FILE must be configured
+# otherwise it will fail because it is unable to
+# find the Root CA authorities ( that file *.crt )
+# This variable is configured in the standard profile for Lombix
+# However I leave a note there in case I forget
+
+
+cat <<EOF > config.toml
+# see src/bootstrap/config.toml.example for more possible options
+[llvm]
+targets = "X86"
+link-shared = true
+
+[build]
+# install cargo as well as rust
+extended = true
+
+[install]
+EOF
+
+echo "prefix = \"$PREFIX\"" >> config.toml
+
+cat <<EOF >> config.toml
+docdir = "share/doc/rustc-1.25.0"
+
+[rust]
+channel = "stable"
+rpath = false
+quiet-tests = true
+codegen-tests = false
+
+[target.x86_64-unknown-linux-gnu]
+llvm-config = "/usr/devel/bin/llvm-config"
+
+
+EOF
+
+export RUSTFLAGS="$RUSTFLAGS -C link-args=-lffi" || exit 1
+./x.py build || exit 1
+
+./x.py install || exit 1

@@ -1,0 +1,9 @@
+
+./configure --prefix=$PREFIX 	\
+	    --disable-static	\
+	    --build=$LMBX_BUILD	\
+	    --enable-a4		\
+	    --enable-metric	\
+	    --with-libpotrace
+
+

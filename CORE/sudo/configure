@@ -1,0 +1,11 @@
+./configure 						\
+	--prefix=$PREFIX				\
+	--sysconfdir=$PREFIX/etc			\
+	--libexecdir=$PREFIX/lib			\
+ 	--with-all-insults  				\
+	--enable-zlib					\
+	--enable-shell-sets-home			\
+	--with-nsswitch=/usr/etc/nsswitch.conf		\
+	--with-env-editor    				\
+	--with-passprompt="[sudo] password for %p: " 
+

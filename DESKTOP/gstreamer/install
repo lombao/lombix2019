@@ -1,0 +1,4 @@
+make install
+
+strip --strip-unneeded $PREFIX/bin/gst-*
+find $PREFIX/lib -type f -name "libgst*" -exec strip --strip-unneeded {} \;

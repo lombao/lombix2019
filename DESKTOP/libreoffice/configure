@@ -1,0 +1,51 @@
+#
+# NOTE: I cannot use system-clucene because the installation in lomibx does not use
+# the contribs-libs ( it is missing ) 
+
+export CC=/usr/bin/gcc
+export CXX=/usr/bin/g++
+
+export LO_PREFIX=$PREFIX
+
+sed -e "/gzip -f/d" 			\
+	-e "s|.1.gz|.1|g"		\
+        -i bin/distro-install-desktop-integration  || exit 1
+
+sed -e "/distro-install-file-lists/d" -i Makefile.in || exit 1
+
+./autogen.sh --prefix=$LO_PREFIX         	\
+	     --build=$LMBX_BUILD		\
+             --sysconfdir=$LO_PREFIX/etc    	\
+             --with-vendor=Lombix        	\
+             --with-lang='en-GB'         	\
+             --with-help                 	\
+             --with-myspell-dicts        	\
+             --with-alloc=system         	\
+             --without-junit             	\
+             --without-system-dicts      	\
+             --disable-dconf             	\
+             --disable-odk               	\
+             --enable-release-build=yes  	\
+             --enable-python=system      	\
+             --with-system-apr			\
+             --with-system-cairo         	\
+             --with-system-curl          	\
+	     --with-system-clucene		\
+             --with-system-expat         	\
+             --with-system-harfbuzz      	\
+             --with-system-boost	 	\
+             --with-system-icu           	\
+             --with-system-jpeg          	\
+             --with-system-lcms2         	\
+             --with-system-libpng        	\
+	     --with-system-libatomic_ops 	\
+             --with-system-libxml        	\
+             --with-system-neon          	\
+             --with-system-nss           	\
+	     --with-system-serf			\
+             --with-system-openssl       	\
+             --with-system-poppler       	\
+             --with-system-postgresql    	\
+             --with-system-epoxy         	\
+             --without-java              	\
+             --with-system-zlib

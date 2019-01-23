@@ -1,0 +1,17 @@
+
+
+./configure --prefix=$PREFIX		\
+	--build=$LMBX_BUILD		\
+	--sysconfdir=$PREFIX/etc	\
+	--localstatedir=/var		\
+	--mandir=$PREFIX/share/man	\
+	--with-apxs2			\
+	--with-config-file-path=$PREFIX/etc	\
+	--with-pear				\
+	--enable-exif				\
+	--enable-mbstring			\
+	--enable-bcmath				\
+	--enable-ftp				\
+	--enable-calendar			\
+	--enable-dba=shared			
+

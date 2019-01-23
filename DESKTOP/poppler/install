@@ -1,0 +1,7 @@
+cd build
+make install
+
+
+#find $PREFIX/lib -type f -name "libpoppler*" -exec strip --strip-unneeded {} \;
+#strip --strip-unneeded $PREFIX/bin/pdf*
+#strip --strip-unneeded $PREFIX/bin/poppler*

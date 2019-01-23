@@ -1,0 +1,5 @@
+make PREFIX=$PREFIX 			\
+     SBINDIR=$PREFIX/sbin 		\
+     MANDIR=$PREFIX/share/man     	\
+     SHAREDIR=$PREFIX/share/hwdata 	\
+     SHARED=yes

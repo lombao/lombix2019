@@ -1,0 +1,11 @@
+export LDFLAGS="-L/usr/pkg/libogg/lib"
+export CFLAGS="-I/usr/pkg/libogg/include"
+
+./configure --prefix=$PREFIX 			\
+	    --disable-static			\
+            --datarootdir=$DATAROOTDIR   	
+
+
+
+
+

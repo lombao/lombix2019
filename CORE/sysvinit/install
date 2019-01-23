@@ -1,0 +1,11 @@
+make ROOT=$PREFIX -C src install
+
+rm -f $PREFIX/bin/pidof
+ln -sv killall5 $PREFIX/sbin/pidof
+cp -Rp $PREFIX/usr/include/* $PREFIX/include
+cp -Rp $PREFIX/usr/bin/* $PREFIX/bin
+cp -Rp $PREFIX/usr/sbin/* $PREFIX/sbin
+
+rm -fr $PREFIX/usr
+
+cp /usr/etc/inittab /usr/etc/inittab.bkp

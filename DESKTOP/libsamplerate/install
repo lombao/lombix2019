@@ -1,0 +1,5 @@
+make install
+
+
+strip --strip-unneeded $PREFIX/bin/sndfile-resample
+strip --strip-unneeded $PREFIX/lib/libsamplerate.so.0.*

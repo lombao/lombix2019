@@ -1,0 +1,3 @@
+unzip mame.zip
+make SUBTARGET=mess
+

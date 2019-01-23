@@ -1,0 +1,253 @@
+#!/usr/bin/bash
+
+
+PATH=/usr/bin:/usr/sbin
+
+
+#
+# Whre to store answers
+TMPF=/tmp/firstboot.$$
+mkdir -pv $TMPF
+
+TMP_HOSTNAME=$TMPF/tmphost
+TMP_ROOTPAS1=$TMPF/tmproot1
+TMP_ROOTPAS2=$TMPF/tmproot2
+TMP_USERNAME=$TMPF/tmpusern
+TMP_USERPASS=$TMPF/tmpuserp
+
+
+# Trap. We do not want to leave 
+# tmp files 
+trap "/usr/bin/rm -fr $TMPF ; exit" 0 1 2 5 15
+
+
+
+
+
+
+###############################
+## MAIN	
+###############################
+
+
+##
+## Presentation
+## 
+msg="Welcome To Lombix FirstBoot. 
+
+We need to configure a few things so I will ask you 
+some questions like the root password, the first 
+user you want to create, and the kyeboard layout.
+
+Your answers will be applied inmediately after each 
+question, but remember that you can change anything
+you set up here on a later stage. 
+
+The most important thing is DO NOT FORGET the root password
+"
+dialog --title "Welcome to Lombix" --msgbox "$msg" 20 70
+
+
+
+##
+## Hostname
+##
+msg="The Hostname: 
+
+The name you want to give to this sytem, a short name.
+For instance you might call it: frodo , or carlos or
+your pet name, wathever. Only lowercase from a to z
+and numbers 0..9
+
+FYI: the name you provide will be stored in file
+      /usr/etc/sysconfig/hostname 
+
+You can edit that file at any time if you decide to 
+change the name later
+"
+repeat=1
+while [ $repeat ]; do
+	repeat=""
+	CHOICE=$(/usr/bin/dialog --inputbox "$msg" 20 70 2>&1 >/dev/tty)
+	if [ $? != 0 ]; then
+	 	repeat=""
+	 	continue
+	fi
+	if [ -z "$CHOICE" ]; then
+		repeat=1
+		dialog --title "Error" --msgbox "ERROR:: Hostname cannot be blank" 5 60 	
+	else
+		if [[ ! "$CHOICE" =~ ^[[:alnum:]]+$ ]]; then
+			repeat=1
+			dialog --title "Error" --msgbox "ERROR:: Hostname can only be made of a-z and 0-9 chars" 5 70 	
+		fi
+	fi
+		
+done
+
+if [ ! -z "$CHOICE"  ]; then
+	echo "$CHOICE" > /usr/etc/sysconfig/hostname
+	/usr/bin/hostname "$CHOICE"
+	dialog --title "Hostname" --msgbox "SUCCESS:: Hostname has been set !!! " 5 60
+fi
+
+####
+#### The root password
+####
+repeat=1
+while [ $repeat ];do
+ 	repeat=""
+ 	
+	msg="Root Password :
+We need to set the password of the root user. 
+I will ask this password twice, in case the passwords don't
+match I will ask you again. 
+
+"
+	PASS1=$(/usr/bin/dialog --title "Set Root Password" --clear --insecure --passwordbox "$msg" 20 70 "" 2>&1 > /dev/tty)
+	[ $? != 0 ] && continue
+	
+	msg="Please repeat the password:"
+	PASS2=$(/usr/bin/dialog --title "Repeat Root Password" --clear --insecure --passwordbox "$msg" 20 70 "" 2>&1 >/dev/tty)
+	[ $? != 0 ] && continue
+			
+	if [ "$PASS1" != "$PASS2" ]; then 
+		/usr/bin/dialog --title "Error" --msgbox "ERROR:: Passwords do not match" 5 60
+		repeat=1
+	fi
+	
+done
+if [ ! -z "$PASS1" ] && [ ! -z "$PASS2" ]; then
+	echo "root:$PASS1" | /usr/bin/chpasswd 
+	/usr/bin/dialog --title "Root Password" --msgbox "SUCCESS:: Root password has been changed !!! " 5 60	
+fi
+
+
+
+
+###
+### The user
+###
+
+msg="The User:
+This will be your normal user account. The home file system will
+be /home/<username>. The user ID and group ID will be 1000, 
+and please, only characters 0-9 a-z.
+
+"
+
+repeat=1
+while [ $repeat ]; do
+	repeat=""
+	USERACCT=$(/usr/bin/dialog --inputbox "$msg" 20 70 2>&1 >/dev/tty)
+	[ $? != 0 ] && continue
+	
+	if [ -z "$USERACCT" ]; then
+		repeat=1
+		/usr/bin/dialog --title "Error" --msgbox "ERROR:: Username cannot be blank" 5 60 	
+	else
+		if [[ ! "$USERACCT" =~ ^[[:alnum:]]+$ ]]; then
+			repeat=1
+			/usr/bin/dialog --title "Error" --msgbox "ERROR:: Username can only be made of a-z and 0-9 chars" 5 70 	
+		fi
+	fi
+		
+done
+
+if [ ! -z "$USERACCT" ]; then
+	/usr/bin/groupadd -g 1000 "$USERACCT"
+	/usr/bin/useradd -m -d "/home/$USERACCT" -c "$USERACCT" -g "$USERACCT" -G video,audio -s /usr/bin/bash -u 1000 "$USERACCT"
+	/usr/bin/dialog --title "Hostname" --msgbox "SUCCESS:: User Account $USERACCT has been created !!! " 5 60
+fi
+
+
+msg="The password for your account $USERACCT:
+We will ask this password only once. This is not as critical
+as the root password. 
+
+"
+if [ ! -z "$USERACCT" ]; then
+	repeat=1
+	while [ $repeat ];do
+ 		repeat=""
+ 	
+		PASSU=$(/usr/bin/dialog --title "$USERACCT Password" --clear --insecure --passwordbox "$msg" 20 70 "" 2>&1 > /dev/tty)
+		[ $? != 0 ] && continue
+	
+		echo "$USERACCT:$PASSU" | /usr/bin/chpasswd 
+		/usr/bin/dialog --title "$USERACCT Password" --msgbox "SUCCESS:: $USERACCT password has been changed !!! " 5 60
+	done
+fi
+
+### 
+### Keyboard layout
+###
+msg="The Keyboard Layout:
+Please, select which keyboard you have. Probably it is the same
+as the country you are in.
+"
+OPTIONS=(uk "United Kingdom" es "Spain" us "United States" it "Italy" fi "Finland" gr "Greece" lt "Lithuania" pl "Poland")
+CHOICE=$(/usr/bin/dialog --clear \
+	--title "Keyboard" 	\
+	--menu "$msg"		\
+	20 70 10 "${OPTIONS[@]}" 2>&1 >/dev/tty)
+if [ $? == 0 ]; then	
+	/usr/bin/loadkeys $CHOICE
+	echo "UNICODE=\"1\"" > /usr/etc/sysconfig/console
+	echo "KEYMAP=$CHOICE" >> /usr/etc/sysconfig/console
+	dialog --title "Keyboard Layout" --msgbox "SUCCESS:: Keyboard layout has been set to $CHOICE !!! " 5 60
+fi
+
+##
+##
+##
+
+##
+## configuring the first netcard
+IFACE=$(/usr/bin/udevadm info -e |		\
+	 /usr/bin/grep ID_NET_NAME_PATH | 	\
+	 /usr/bin/tail -n 1 | /usr/bin/awk -F= '{print $2}')
+
+echo "ONBOOT=yes" 		>  /usr/etc/sysconfig/ifconfig.$IFACE
+echo "IFACE=$IFACE"     	>> /usr/etc/sysconfig/ifconfig.$IFACE
+echo 'SERVICE="dhcpcd"'  	>> /usr/etc/sysconfig/ifconfig.$IFACE
+echo 'DHCP_START=""'		>> /usr/etc/sysconfig/ifconfig.$IFACE
+echo 'DHCP_STOP="-k"'		>> /usr/etc/sysconfig/ifconfig.$IFACE
+
+
+
+##
+##
+##
+
+
+msg="Job Done!!!
+Now you can start using Lombix. Enjoy!!!
+
+SOME DETAILS YOU SHOULD KNOW
+* You should expect failures/bugs/wrong things. This is an unfinished job.
+  I would appreciate if you let me know of these problems: 
+  http::/lombix.org
+  
+* The network has been configured to use dhcpcd, the net device will be
+  detected and configured ( to use dhcp ) automatically. If you want to 
+  change this please see  /usr/etc/sysconfig and find a file named
+  ifconfig.<devicename>
+  
+* The system will startup in text mode, if you want to start the X ,
+  use the command startx once you have log in
+
+* Some packages when recompiled will overwrite all configuration files. 
+  This is a well known issue that must be corrected.
+  
+* The tool to recompile the packages you see in /usr/share/lmbx is 
+  lmbx , please lmbx --help for details or check the wiki 
+  at http://lombix.org
+    
+"
+dialog --title "Setup Complete" --msgbox "$msg" 35 80
+/usr/bin/clear
+
+
+
+

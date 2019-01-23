@@ -1,0 +1,7 @@
+
+./bootstrap
+./configure --prefix=$PREFIX 			\
+	    --build=$LMBX_BUILD			\
+            --bindir=$PREFIX/bin 		\
+            --datadir=$PREFIX/share 
+

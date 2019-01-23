@@ -1,0 +1,11 @@
+
+
+./configure   \
+	--prefix=$PREFIX		  	\
+	--build=$LMBX_BUILD			\
+        --without-keyring                 	\
+	--enable-introspection			\
+	--disable-nautilus			\
+	--enable-compile-warnings=minimum 	\
+        --disable-static                 
+

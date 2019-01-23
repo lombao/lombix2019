@@ -1,0 +1,7 @@
+
+sed -i '/AX_APPEND/s/^/#/' configure.ac || exit 
+autoreconf
+./configure --prefix=$PREFIX \
+            --disable-static 
+
+

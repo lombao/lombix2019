@@ -1,0 +1,17 @@
+make install
+
+find $PREFIX/libexec/coreutils -type f -exec strip --strip-unneeded {} \;
+
+
+strip --strip-unneeded $PREFIX/bin/dir
+strip --strip-unneeded $PREFIX/bin/ls
+strip --strip-unneeded $PREFIX/bin/vdir
+strip --strip-unneeded $PREFIX/bin/mv
+strip --strip-unneeded $PREFIX/bin/sort
+strip --strip-unneeded $PREFIX/bin/install
+strip --strip-unneeded $PREFIX/bin/cp
+strip --strip-unneeded $PREFIX/bin/du
+strip --strip-unneeded $PREFIX/bin/date
+strip --strip-unneeded $PREFIX/bin/factor
+strip --strip-unneeded $PREFIX/bin/touch
+strip --strip-unneeded $PREFIX/bin/df

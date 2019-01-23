@@ -1,0 +1,4 @@
+make install
+
+
+find $PREFIX/lib -type f -name "*tiff*" -exec strip --strip-unneeded {} \;

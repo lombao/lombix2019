@@ -1,0 +1,7 @@
+make install
+
+strip --strip-unneeded $PREFIX/bin/fluxbox
+strip --strip-unneeded $PREFIX/bin/fluxbox-remote
+strip --strip-unneeded $PREFIX/bin/fluxbox-update_configs
+
+

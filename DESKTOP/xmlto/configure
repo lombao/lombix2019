@@ -1,0 +1,4 @@
+
+LINKS="/usr/bin/links"			\
+./configure --prefix=$PREFIX		\
+	--with-webrowser=lynx

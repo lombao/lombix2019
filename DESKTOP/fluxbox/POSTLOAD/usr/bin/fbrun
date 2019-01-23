@@ -1,0 +1,42 @@
+#! /usr/bin/bash
+
+XTERM="xterm"
+
+# YAD
+YAD=/usr/bin/yad
+
+# create history file
+mkdir -p ${XDG_CACHE_HOME:-$HOME/.cache}/
+HISTFILE=${XDG_CACHE_HOME:-$HOME/.cache}/ix-run.history
+touch $HISTFILE
+
+# create and run dialog
+TITLE="Run command"
+TEXT="\nEnter command to execute:\n"
+rcmd=$($YAD --width=500 --center --window-icon="system-run" --name="${0##*/}" --title="$TITLE" --text="$TEXT" --image="system-run" --entry --editable --rest="$HISTFILE")
+
+[[ -z "$rcmd" ]] && exit 0
+
+# run command
+case $rcmd in
+    http://*|https://*|ftp://*)
+    xdg-open $rcmd &
+    ;;
+    mailto://*)
+    xdg-email $rcmd &
+    ;;
+    man://*)
+    eval $XTERM -e "man ${rcmd#man://}" &
+    ;;
+    telnet*|ssh*)
+    eval $XTERM -e "$rcmd" &
+    ;;
+    *)
+    $XTERM -e "$rcmd; bash" &
+    ;;
+esac
+
+# add command to history
+grep -q -F "$rcmd" $HISTFILE || echo "$rmcd" >> $HISTFILE
+
+exit 0

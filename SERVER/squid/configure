@@ -1,0 +1,9 @@
+
+
+./configure --prefix=$PREFIX                 	\
+            --sbindir=$PREFIX/bin		\
+            --localstatedir=/var		\
+ 	    --with-logdir=/var/log/squid	\
+            --with-pidfile=/run/squid.pid	\
+            --with-swapdir=/var/cache/squid	\
+	    --disable-nls                      

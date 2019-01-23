@@ -1,0 +1,11 @@
+export LDFLAGS="-L/usr/pkg/libogg/lib -L/usr/pkg/speex/lib"
+export CFLAGS="-I/usr/pkg/libogg/include -I/usr/pkg/speex/include"
+
+./configure --prefix=$PREFIX 			\
+	    --disable-static			\
+            --datarootdir=$DATAROOTDIR   	
+
+
+
+
+

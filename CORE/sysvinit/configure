@@ -1,0 +1,21 @@
+sed 's@"/sbin/shutdown@"/usr/sbin/shutdown@' -i src/*.c
+sed 's@"/bin/shutdown@"/usr/sbin/shutdown@' -i src/*.c
+
+sed 's@"/bin/sh@"/usr/bin/bash@g' -i src/*.c
+sed 's@"/bin/sh@"/usr/bin/bash@g' -i src/*.h
+
+
+sed 's@SHELL=/bin/sh@SHELL=/usr/bin/bash@' -i src/*.c
+
+sed 's@"/sbin/mount@"/usr/sbin/mount@g' -i src/*.c
+sed 's@"/bin/mount@"/usr/bin/mount@g' -i src/*.c
+
+sed 's@"/sbin/init@"/usr/sbin/init@g' -i src/*.c
+sed 's@"/sbin/init@"/usr/sbin/init@g' -i src/*.h
+sed 's@"/sbin/sulogin@"/usr/sbin/sulogin@g' -i src/*.c
+sed 's@"/sbin/sulogin@"/usr/sbin/sulogin@g' -i src/*.h
+
+
+
+
+

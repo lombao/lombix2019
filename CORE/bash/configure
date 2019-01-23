@@ -1,0 +1,5 @@
+./configure --prefix=$PREFIX      	\
+	    --build=$LMBX_BUILD		\
+            --sysconfdir=/usr/etc     	\
+            --without-bash-malloc 	\
+            --with-installed-readline

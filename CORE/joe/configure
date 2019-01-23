@@ -1,0 +1,14 @@
+
+sed 's@"/bin/sh"@"/usr/bin/bash"@g' -i joe/ushell.c || exit 1
+sed 's@"/bin/bash"@"/usr/bin/bash"@g' -i joe/ushell.c || exit 1
+sed 's@"/bin/sh"@"/usr/bin/bash"@g' -i joe/ublock.c || exit 1
+sed 's@"/bin/sh"@"/usr/bin/bash"@g' -i joe/tty.c || exit 1
+sed 's@"/bin/sh"@"/usr/bin/bash"@g' -i joe/main.c || exit 1
+sed 's@"/bin/cat"@"/usr/bin/cat"@g' -i joe/main.c || exit 1
+sed 's@;/bin/rm@;/usr/bin/rm@g' -i joe/builtins.c || exit 1
+autoreconf -i
+./configure --prefix=$PREFIX 			\
+            --mandir=$PREFIX/share/man		\
+	    --docdir=$PREFIX/share/doc		\
+	    --infodir=$PREFIX/share/info
+

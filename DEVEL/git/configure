@@ -1,0 +1,8 @@
+./configure 	--prefix=$PREFIX 			\
+		--with-gitconfig=$PREFIX/etc/gitconfig	\
+		--with-perl=$PERL			\
+		--with-python=$PYTHON3			\
+                --with-pager=/usr/bin/less		\
+		--with-editor=/usr/bin/joe		\
+		--with-shell=/usr/bin/bash
+

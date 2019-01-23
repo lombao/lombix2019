@@ -1,0 +1,23 @@
+make install
+
+
+for lib in ncurses form panel menu ; do
+    rm -vf                    $PREFIX/lib/lib${lib}.so
+    echo "INPUT(-l${lib}w)" > $PREFIX/lib/lib${lib}.so
+    ln -sfv ${lib}w.pc        $PREFIX/lib/pkgconfig/${lib}.pc
+done
+
+
+strip --strip-unneeded $PREFIX/bin/clear
+strip --strip-unneeded $PREFIX/bin/infocmp
+strip --strip-unneeded $PREFIX/bin/tabs
+strip --strip-unneeded $PREFIX/bin/tic
+strip --strip-unneeded $PREFIX/bin/toe
+strip --strip-unneeded $PREFIX/bin/tput
+strip --strip-unneeded $PREFIX/bin/tset
+
+
+#strip --strip-unneeded $PREFIX/lib/libform*
+#strip --strip-unneeded $PREFIX/lib/libmenu*
+#strip --strip-unneeded $PREFIX/lib/libpanel*
+#strip --strip-unneeded $PREFIX/lib/libncurses*

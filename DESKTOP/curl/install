@@ -1,0 +1,5 @@
+make install
+
+
+strip --strip-unneeded $PREFIX/bin/curl
+strip --strip-unneeded $PREFIX/lib/libcurl.so.4.*

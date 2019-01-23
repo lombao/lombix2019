@@ -1,0 +1,27 @@
+
+mkdir build
+cd    build
+
+#rm -f /usr/pkgs/glibc/include/limits.h
+
+ln -svf ld-linux-x86-64.so.2 /usr/lib/ld-lsb-x86-64.so.3
+
+
+export GCC="gcc -isystem /usr/lib/gcc/x86_64-lombix-linux-gnu/8.2.0/include -isystem /usr/include"
+export CC=$GCC
+../configure                               \
+     --enable-kernel=3.2                   \
+     --build=$LMBX_BUILD                   \
+      --prefix=$PREFIX                     \
+      --libexecdir=$PREFIX/lib		   \
+      --sysconfdir=$PREFIX/etc             \
+      --localstatedir=/var                 \
+      --sbindir=$PREFIX/sbin                \
+      --libdir=$PREFIX/lib                 \
+      --includedir=$PREFIX/include         \
+      --infodir=$DATAROOTDIR/info	   \
+      --mandir=$DATAROOTDIR/man	 	   \
+      --without-selinux                    \
+      --enable-stack-protector=strong      \
+      libc_cv_slibdir=$PREFIX/lib   libc_cv_rootsbindir=$PREFIX/sbin    
+   

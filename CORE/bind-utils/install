@@ -1,0 +1,6 @@
+make -C bin/dig	install
+
+
+strip --strip-unneeded $PREFIX/bin/dig
+strip --strip-unneeded $PREFIX/bin/host
+strip --strip-unneeded $PREFIX/bin/nslookup

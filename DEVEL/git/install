@@ -1,0 +1,5 @@
+make install
+
+strip --strip-unneeded $PREFIX/bin/git
+strip --strip-unneeded $PREFIX/bin/git-receive-pack
+strip --strip-unneeded $PREFIX/bin/git-shell

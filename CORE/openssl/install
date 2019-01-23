@@ -1,0 +1,3 @@
+sed -i 's# libcrypto.a##;s# libssl.a##;/INSTALL_LIBS/s#libcrypto.a##' Makefile
+
+make MANSUFFIX=ssl install

@@ -1,0 +1,5 @@
+export LDFLAGS="-L/usr/pkg/mpg123/lib -L/usr/pkg/libvorbis/lib -L/usr/pkg/libogg/lib -L/usr/pkg/flac/lib -L/usr/pkg/libmad/lib"
+export CFLAGS="-I/usr/pkg/mpg123/include -I/usr/pkg/libvorbis/include -I/usr/pkg/libogg/include -I/usr/pkg/flac/include -I/usr/pkg/libmad/include"
+export CPPFLAGS=$CFLAGS
+
+./configure --prefix=$PREFIX 

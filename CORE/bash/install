@@ -1,0 +1,5 @@
+make install && ln -sfv $PREFIX/bin/bash $PREFIX/bin/sh 
+
+
+strip --strip-unneeded $PREFIX/bin/bash
+find $PREFIX/lib/bash -type f -exec strip --strip-unneeded {} \;

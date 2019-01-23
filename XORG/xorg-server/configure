@@ -1,0 +1,9 @@
+./configure --prefix=$PREFIX 		 		\
+            --localstatedir=/var   			\
+            --with-os-vendor=Lombix 			\
+            --with-os-name=Lombix   			\
+            --disable-static       			\
+            --enable-glamor 				\
+            --enable-install-setuid 			\
+            --enable-suid-wrapper   			\
+            --disable-systemd-logind 			

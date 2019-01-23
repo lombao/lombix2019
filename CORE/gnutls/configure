@@ -1,0 +1,7 @@
+
+./configure   --prefix=$PREFIX  \
+              --disable-tests   \
+              --disable-doc     \
+	      --with-default-trust-store-pkcs11="pkcs11:" 	\
+              --with-default-trust-store-file=$LMBX_CA_CERT
+ 

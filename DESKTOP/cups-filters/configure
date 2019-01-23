@@ -1,0 +1,8 @@
+./configure --prefix=$PREFIX			\
+	    --build=$LMBX_BUILD			\
+            --libdir=$PREFIX/lib        	\
+            --localstatedir=/var		\
+            --mandir=$PREFIX/share/man		\
+            --docdir=$PREFIX/share/doc		\
+            --sysconfdir=$PREFIX/etc		\
+            --disable-static	           	

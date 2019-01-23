@@ -1,0 +1,10 @@
+sed -i 's/png_\(sizeof\)/\1/g' examples/png2theora.c
+
+./configure --prefix=$PREFIX 			\
+	    --build=$LMBX_BUILD			\
+            --disable-static 			\
+            --disable-sdltest 			\
+	    --disable-vorbistest 		\
+	    --disable-oggtest  			\
+            --disable-examples 			
+

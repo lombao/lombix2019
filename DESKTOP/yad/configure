@@ -1,0 +1,8 @@
+
+./configure --prefix=$PREFIX 		\
+            --enable-html     		\
+            --enable-icon-browser 	\
+            --with-gtk=gtk3
+
+
+

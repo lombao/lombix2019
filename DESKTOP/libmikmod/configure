@@ -1,0 +1,6 @@
+
+./configure --prefix=$PREFIX 	\
+        --enable-alsa		\
+	--disable-static 	\
+	--enable-sdl		\
+	--enable-sdl2		

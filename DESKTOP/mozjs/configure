@@ -1,0 +1,13 @@
+
+cd js/src
+./configure   					\
+            --prefix=$PREFIX      		\
+	    --build=$LMBX_BUILD			\
+            --libdir=$PREFIX/lib  		\
+            --sbindir=$PREFIX/sbin 		\
+	    --with-intl-api			\
+	    --with-system-zlib			\
+	    --with-system-nspr			\
+	    --with-system-icu			\
+	    --enable-threadsafe			\
+	    --enable-readline

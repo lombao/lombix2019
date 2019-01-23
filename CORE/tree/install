@@ -1,0 +1,5 @@
+make MANDIR=$PREFIX/share/man/man1 install
+chmod 644 $PREFIX/share/man/man1/tree.1
+
+
+strip --strip-unneeded $PREFIX/bin/tree

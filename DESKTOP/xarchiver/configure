@@ -1,0 +1,5 @@
+
+
+./autogen.sh --prefix=$PREFIX 		\
+	    --build=$LMBX_DUILD		\
+            --sysconfdir=$PREFIX/etc    

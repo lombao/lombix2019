@@ -1,0 +1,5 @@
+cd BUILD
+make install
+
+strip --strip-unneeded $PREFIX/lib/libjasper.so.4.0.0
+strip --strip-unneeded $PREFIX/bin/jasper

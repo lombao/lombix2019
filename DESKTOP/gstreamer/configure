@@ -1,0 +1,2 @@
+./configure --prefix=$PREFIX 				\
+            --with-package-name="Gstreamer 1.14.2 LOMBIX" 

@@ -1,0 +1,6 @@
+make install
+
+
+strip --strip-unneeded  $PREFIX/bin/bc
+strip --strip-unneeded  $PREFIX/bin/dc
+

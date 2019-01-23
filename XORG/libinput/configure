@@ -1,0 +1,10 @@
+mkdir build
+cd build
+
+meson       --prefix=$PREFIX 			\
+            -Dudev-dir=/usr/lib/udev		\
+ 	    -Ddebug-gui=false	 		\
+            -Dtests=false   			\
+            -Ddocumentation=false 		\
+            -Dlibwacom=false
+ 			

@@ -1,0 +1,13 @@
+
+
+sed -i 's@/bin/sh@/usr/bin/bash@'       src/man.c	|| exit 1
+
+./configure --prefix=$PREFIX                     	\
+	    --build=$LMBX_BUILD				\
+            --sysconfdir=$PREFIX/etc             	\
+	    --sbindir=$PREFIX/sbin		 	\
+	    --enable-cache-owner=bin			\
+	    --with-db=gdbm			 	\
+            --libdir=$PREFIX/lib                 	\
+            --disable-setuid                     	
+

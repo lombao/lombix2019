@@ -1,0 +1,13 @@
+make install
+
+chmod 755 $PREFIX/lib/lib{hogweed,nettle}.so
+
+strip --strip-unneeded $PREFIX/bin/nettle-hash
+strip --strip-unneeded $PREFIX/bin/nettle-lfib-stream
+strip --strip-unneeded $PREFIX/bin/nettle-pbkdf2
+strip --strip-unneeded $PREFIX/bin/pkcs1-conv
+strip --strip-unneeded $PREFIX/bin/sexp-conv
+
+
+strip --strip-unneeded $PREFIX/lib/libnettle.so.6.*
+strip --strip-unneeded $PREFIX/lib/libhogweed.so.4.*

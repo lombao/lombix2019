@@ -1,0 +1,5 @@
+make install
+
+
+find $PREFIX/bin -type f -name "*png*"  -exec strip --strip-unneeded {} \;
+find $PREFIX/lib -type f -name "*png*"  -exec strip --strip-unneeded {} \;

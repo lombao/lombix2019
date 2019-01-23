@@ -1,0 +1,4 @@
+./configure --prefix=$PREFIX 	\
+            --with-gtk=no 	\
+            --with-extra-only 	\
+            --disable-static 

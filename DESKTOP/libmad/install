@@ -1,0 +1,18 @@
+make install
+
+echo "prefix=$PREFIX" > $PREFIX/lib/pkgconfig/mad.pc
+cat >> $PREFIX/lib/pkgconfig/mad.pc << "EOF"
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: mad
+Description: MPEG audio encoder
+Requires:
+Version: 0.15.1b
+Libs: -L${libdir} -lmad
+Cflags: -I${includedir}
+EOF
+
+
+strip --strip-unneeded $PREFIX/lib/libmad.so.0.2.1

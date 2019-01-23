@@ -1,0 +1,2 @@
+./configure --prefix=$PREFIX 						\
+            --with-package-name="Gstreamer Good Plugins 1.14.2 LOMBIX" 

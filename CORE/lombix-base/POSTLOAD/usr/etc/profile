@@ -1,0 +1,96 @@
+# LOMBIX 2012
+# ##################
+# Begin /usr/etc/profile
+#
+
+
+
+# Functions to help us manage paths.  Second argument is the name of the
+# path variable to be modified (default: PATH)
+# Taken from LFS Project
+pathremove () {
+        local IFS=':'
+        local NEWPATH
+        local DIR
+        local PATHVARIABLE=${2:-PATH}
+        for DIR in ${!PATHVARIABLE} ; do
+                if [ "$DIR" != "$1" ] ; then
+                  NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
+                fi
+        done
+        export $PATHVARIABLE="$NEWPATH"
+}
+
+pathprepend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
+}
+
+pathappend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
+}
+
+
+
+# SOme identification
+export USER="$(/usr/bin/id -un)"
+
+
+
+# Set initial variables
+export PATH=/usr/bin:/usr/sbin
+export HISTSIZE=1000
+export HISTIGNORE="&:[bf]g:exit"
+export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig
+export SHELL=/usr/bin/bash
+export CONFIG_SHELL=$SHELL
+export LMBX_CA_CERT=/usr/share/ca-cert/ca-bundle.crt
+export SSL_CERT_FILE=$LMBX_CA_CERT
+export LMBX_BUILD=x86_64-lombix-linux-gnu
+export MANPATH=/usr/share/man
+export DATAROOTDIR=/usr/share
+export XDG_DATA_DIRS=$DATAROOTDIR
+export XDG_CONFIG_DIRS=/usr/etc/xdg
+export XDG_RUNTIME_DIR=/tmp/xdg-${USER}
+export HOSTNAME=$(/usr/bin/cat /usr/etc/sysconfig/hostname)
+export FONTS_SHARE_PATH=$DATAROOTDIR/fonts
+export ICONS_SHARE_PATH=$DATAROOTDIR/icons
+export DBUS_SHARE_PATH=$DATAROOTDIR/dbus-1
+export PIXMAPS_SHARE_PATH=$DATAROOTDIR/pixmaps
+export CC=/usr/devel/bin/gcc
+export GCC=$CC
+export CXX="/usr/devel/bin/g++"
+
+export LOGNAME=$USER
+export MAIL="/var/mail/${USER}"
+
+                                                      
+
+# Setup the PS1
+NORMAL="\[\e[0m\]"
+RED="\[\e[1;31m\]"
+GREEN="\[\e[1;32m\]"
+if [[ $EUID == 0 ]] ; then
+  PS1="$RED[$HOSTNAME:$NORMAL\w$RED ]# $NORMAL"
+else
+  PS1="$GREEN\u[ $HOSTNAME:$NORMAL\w$GREEN ]\$ $NORMAL"
+fi
+
+
+
+# Execute the rest of the profile plugins
+for script in /usr/etc/profile.d/*.sh ; do
+        if [ -r $script ] ; then
+                . $script
+        fi
+done
+
+
+# Now to clean up
+unset pathremove pathprepend pathappend
+
+
+# end /usr/etc/profile

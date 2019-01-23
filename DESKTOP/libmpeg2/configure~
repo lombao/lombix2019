@@ -1,0 +1,10 @@
+sed -i 's/static const/static/' libmpeg2/idct_mmx.c || exit 1
+
+export LDFLAGS="-L/usr/pkg/sdl/lib"
+export CFLAGS="-I/usr/pkg/sdl/include"
+
+./configure --prefix=$PREFIX		   	\
+            --enable-shared  			\
+	    --with-x				\
+	    --datarootdir=$DATAROOTDIR		\
+            --disable-static 

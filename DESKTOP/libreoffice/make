@@ -1,0 +1,4 @@
+
+unset PREFIX
+CPPFLAGS="-DU_USING_ICU_NAMESPACE=1" make build-nocheck
+

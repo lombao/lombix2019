@@ -1,0 +1,5 @@
+make  install
+
+strip --strip-unneeded $PREFIX/sbin/hdparm
+
+

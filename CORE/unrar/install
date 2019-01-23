@@ -1,0 +1,5 @@
+mkdir -p $PREFIX/bin
+install -v -m755 unrar $PREFIX/bin
+
+
+strip --strip-unneeded $PREFIX/bin/unrar

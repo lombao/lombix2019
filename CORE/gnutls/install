@@ -1,0 +1,21 @@
+make install
+
+
+strip --strip-unneeded $PREFIX/bin/certtool
+strip --strip-unneeded $PREFIX/bin/gnutls-cli
+strip --strip-unneeded $PREFIX/bin/gnutls-cli-debug
+strip --strip-unneeded $PREFIX/bin/gnutls-serv
+strip --strip-unneeded $PREFIX/bin/ocsptool
+strip --strip-unneeded $PREFIX/bin/p11tool
+strip --strip-unneeded $PREFIX/bin/psktool
+strip --strip-unneeded $PREFIX/bin/srptool
+
+
+strip --strip-unneeded $PREFIX/lib/libgnutls.so.30.*
+strip --strip-unneeded $PREFIX/lib/libgnutlsxx.so.28.*
+
+
+
+
+
+

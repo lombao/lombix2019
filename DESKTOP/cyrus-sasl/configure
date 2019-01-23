@@ -1,0 +1,14 @@
+
+
+autoreconf -fi || exit 1
+
+./configure --prefix=$PREFIX    		\
+	    --build=$LMBX_BUILD			\
+            --sysconfdir=$PREFIX/etc    	\
+	    --sbindir=$PREFIX/bin		\
+	    --mandir=$PREFIX/share/man		\
+            --enable-auth-sasldb 		\
+ 	    --with-devrandom=/dev/urandom	\
+            --with-dbpath=/var/lib/sasl/sasldb2 \
+            --with-saslauthd=/run/saslauthd 
+

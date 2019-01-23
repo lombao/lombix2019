@@ -1,0 +1,4 @@
+./configure --prefix=$PREFIX 		\
+            --with-readline         	\
+            --mandir=$PREFIX/share/man 	\
+            --infodir=$PREFIX/share/info

@@ -1,0 +1,8 @@
+make install
+
+chmod -v 0755 $PREFIX/lib/preloadable_libintl.so
+
+find $PREFIX/lib/gettext -type f -exec strip --strip-unneeded {} \;
+find $PREFIX/lib -type f -name "libasprint*" -exec strip --strip-unneeded {} \;
+find $PREFIX/lib -type f -name "libgettext*" -exec strip --strip-unneeded {} \;
+find $PREFIX/lib -type f -name "libpreloadable*" -exec strip --strip-unneeded {} \;

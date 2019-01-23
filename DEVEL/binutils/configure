@@ -1,0 +1,15 @@
+mkdir build
+cd    build
+
+../configure                               	\
+      --build=$LMBX_BUILD		   	\
+      --enable-gold				\
+      --enable-ld=default			\
+      --enable-plugins				\
+      --enable-64-bit-bfd			\
+      --prefix=$PREFIX                     	\
+      --with-system-zlib		   	\
+      --enable-shared                      	\
+      --disable-werror                     	
+
+

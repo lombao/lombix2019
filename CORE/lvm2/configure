@@ -1,0 +1,13 @@
+
+./configure 						\
+	--prefix=$PREFIX 				\
+        --sysconfdir=$PREFIX/etc			\
+	--with-confdir=$PREFIX/etc			\
+        --sbindir=$PREFIX/sbin				\
+        --enable-udev_rules				\
+        --enable-applib     				\
+        --enable-cmdlib     				\
+        --enable-pkgconfig  				\
+	--disable-selinux 				\
+        --enable-udev_sync  
+

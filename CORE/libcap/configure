@@ -1,0 +1,6 @@
+
+sed 's@/bin/bash@/usr/bin/bash@g' progs/*.c	|| exit 1
+sed 's@/bin/bash@/usr/bin/bash@g' progs/*.sh	|| exit 1
+sed 's@/bin/pwd@/usr/bin/pwd@g' progs/*.sh || exit 1
+
+sed -i '/install.*STALIBNAME/d' libcap/Makefile || exit 1

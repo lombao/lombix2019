@@ -1,0 +1,11 @@
+
+./configure --prefix=$PREFIX 					\
+	    --build=$LMBX_BUILD					\
+	    --disable-docs					\
+	    --with-x						\
+	    --with-pkgconfigdir=$PREFIX/lib/pkgconfig		\
+            --disable-static 					\
+            --mandir=$PREFIX/share/man				\
+            --enable-hdri  					\
+            --with-modules 					\
+            --with-perl   

@@ -1,0 +1,7 @@
+./configure --prefix=$PREFIX    		\
+	    --build=$LMBX_BUILD			\
+            --with-apr=$PREFIX			\
+ 	    --with-gdbm=/usr/pkgs/gdbm		\
+	    --with-openssl=/usr/pkgs/openssl	\
+	    --with-crypto
+

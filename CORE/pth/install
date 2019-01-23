@@ -1,0 +1,4 @@
+make install
+
+
+strip --strip-unneeded $PREFIX/lib/libpth.so.20.0.27

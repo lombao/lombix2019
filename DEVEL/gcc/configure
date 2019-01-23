@@ -1,0 +1,19 @@
+
+
+
+sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+
+
+mkdir build
+cd    build
+
+
+SED=sed
+../configure --prefix=$PREFIX         					\
+             --enable-shared						\
+             --disable-bootstrap      					\
+             --disable-libmpx						\
+	     --with-system-zlib						\
+             --enable-languages=c,c++,go,fortran 			\
+             --disable-multilib       					
+
