@@ -157,8 +157,8 @@ function buildPackage {
     	export URL
     	export PREFIX
     	[ -z "$STRIP" ] && STRIP="yes"
-    	export STRIP
-    	export CREDITS
+    	#export CSTRIP
+    	#export CREDITS
     	[ -z "$PREFIX" ] && error_exit "ERROR: PREFIX is not defined in the MANIFEST"
     
 

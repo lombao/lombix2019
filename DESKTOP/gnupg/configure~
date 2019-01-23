@@ -1,6 +1,0 @@
-./configure --prefix=$PREFIX 		\
-	--sbindir=$PREFIX/bin		\
-	--enable-symcryptrun		\
-	--enable-maintainer-mdoe	\
-	--datarootdir=$DATAROOTDIR
-

@@ -2,7 +2,7 @@
 # URL: The place where the source code has been downloaded.
 # If you remove the package the installation tool will try to 
 # download it again from this place.
-URL=https://sourceforge.net/projects/dosbox/files/dosbox/0.74/dosbox-0.74.tar.gz
+URL=https://sourceforge.net/projects/dosbox/files/dosbox/0.74-2/dosbox-0.74-2.tar.gz
 
 ##
 # PREFIX: Where the package is going to be installed. 

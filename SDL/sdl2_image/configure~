@@ -1,3 +1,0 @@
-export LDFLAGS="-L/usr/pkg/libpng/lib -L/usr/pkg/libtiff/lib -L/usr/pkg/libjpeg/lib"
-export CFLAGS="-I/usr/pkg/libpng/include -I/usr/pkg/libtiff/include -I/usr/pkg/libjpeg/include"
-./configure --prefix=$PREFIX

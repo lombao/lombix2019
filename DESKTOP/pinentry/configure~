@@ -1,7 +1,0 @@
-./configure --prefix=$PREFIX \
-	--datarootdir=$DATAROOTDIR	\
-	--enable-pinentry-gnome3	\
-	--enable-inside-emacs=no	\
-	--with-libgpg-error-prefix=/usr/pkg/gnupg	\
-	--with-libassuan-prefix=/usr/pkg/gnupg		
-
