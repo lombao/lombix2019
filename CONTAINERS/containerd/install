@@ -1,0 +1,4 @@
+go get github.com/containerd/containerd
+cd $GOPATH/src/github.com/containerd/containerd
+make DESTDIR=$PREFIX
+make DESTDIR=$PREFIX install
