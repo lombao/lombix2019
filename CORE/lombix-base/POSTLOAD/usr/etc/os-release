@@ -1,9 +1,9 @@
 NAME=Lombix
-VERSION="2019.1 ( Aluma )"
+VERSION="2019.2 ( Aluma )"
 ID=lombix
 VERSION_ID=2019
 VERSION_CODENAME=Aluma
 PRETTY_NAME="Lombix OS 2019 ( Aluma )"
 ANSI_COLOR="0:34"
-VERSION_ID=2019.1
+VERSION_ID=2019.2
 HOME_URL="http://lombix.org"
