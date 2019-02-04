@@ -1,0 +1,5 @@
+make install
+
+
+strip --strip-unneeded $PREFIX/lib/libfftw3.so.3.5.8
+strip --strip-unneeded $PREFIX/lib/libfftw3_threads.so.3.5.8
